@@ -7,8 +7,8 @@ import torch.cuda
 import torch.distributed
 import torch.multiprocessing
 
-from retinanet import infer, train, utils
-from retinanet.model import Model
+import infer, train, utils
+from model import Model
 from retinanet._C import Engine
 
 
@@ -239,6 +239,7 @@ def main(args=None):
     if model: model.share_memory()
 
     world = torch.cuda.device_count()
+    world = 1
     if args.command == 'export' or world <= 1:
         worker(0, args, 1, model, state)
     else:

@@ -1,9 +1,9 @@
 import torch
-from ._C import decode as decode_cuda
-from ._C import iou as iou_cuda
-from ._C import nms as nms_cuda
+from retinanet._C import decode as decode_cuda
+from retinanet._C import iou as iou_cuda
+from retinanet._C import nms as nms_cuda
 import numpy as np
-from .utils import order_points, rotate_boxes
+from utils import order_points, rotate_boxes
 
 def generate_anchors(stride, ratio_vals, scales_vals, angles_vals=None):
     'Generate anchors coordinates from scales/ratios'

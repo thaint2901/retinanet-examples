@@ -8,10 +8,10 @@ from apex.parallel import DistributedDataParallel as DDP
 from pycocotools.cocoeval import COCOeval
 import numpy as np
 
-from .data import DataIterator, RotatedDataIterator
-from .dali import DaliDataIterator
-from .model import Model
-from .utils import Profiler, rotate_box
+from data import DataIterator, RotatedDataIterator
+from dali import DaliDataIterator
+from model import Model
+from utils import Profiler, rotate_box
 
 
 def infer(model, path, detections_file, resize, max_size, batch_size, mixed_precision=True, is_master=True, world=0,

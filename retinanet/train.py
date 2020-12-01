@@ -5,12 +5,12 @@ from torch.optim import SGD, AdamW
 from torch.optim.lr_scheduler import LambdaLR
 from apex import amp, optimizers
 from apex.parallel import DistributedDataParallel
-from .backbones.layers import convert_fixedbn_model
+from backbones.layers import convert_fixedbn_model
 
-from .data import DataIterator, RotatedDataIterator
-from .dali import DaliDataIterator
-from .utils import ignore_sigint, post_metrics, Profiler
-from .infer import infer
+from data import DataIterator, RotatedDataIterator
+from dali import DaliDataIterator
+from utils import ignore_sigint, post_metrics, Profiler
+from infer import infer
 
 
 def train(model, state, path, annotations, val_path, val_annotations, resize, max_size, jitter, batch_size, iterations,
