@@ -9,7 +9,7 @@ import torch.multiprocessing
 
 import infer, train, utils
 from model import Model
-from retinanet._C import Engine
+# from retinanet._C import Engine
 
 
 def parse(args):
