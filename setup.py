@@ -6,7 +6,7 @@ setup(
     version='0.2.5',
     description='Fast and accurate single shot object detector',
     author = 'NVIDIA Corporation',
-    packages=['retinanet', 'retinanet.backbones'],
+    # packages=['retinanet', 'retinanet.backbones'],
     ext_modules=[CUDAExtension('retinanet._C',
         ['csrc/extensions.cpp', 'csrc/engine.cpp', 'csrc/cuda/decode.cu', 'csrc/cuda/decode_rotate.cu', 'csrc/cuda/nms.cu', 'csrc/cuda/nms_iou.cu'],
         extra_compile_args={
@@ -29,5 +29,5 @@ setup(
         'pillow',
         'requests',
     ],
-    entry_points = {'console_scripts': ['odtk=retinanet.main:main']}
+    # entry_points = {'console_scripts': ['odtk=retinanet.main:main']}
 )

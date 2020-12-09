@@ -294,7 +294,7 @@ def decode(all_cls_head, all_box_head, stride=1, threshold=0.05, top_n=1000, anc
         # Infer kept bboxes
         x = indices % width
         y = (indices / width) % height
-        a = indices / num_classes / height / width
+        a = indices / num_classes / height / width  # stt cua anchor
         box_head = box_head.view(num_anchors, num_boxes, height, width)
         boxes = box_head[a, :, y, x]
 

@@ -101,11 +101,13 @@ int decode(int batch_size,
       cub::CountingInputIterator<int>(0),
       flags, indices, num_selected, scores_size, stream);
     cudaStreamSynchronize(stream);
+    // convert num_selected from gpu to cpu mem
     int num_detections = *thrust::device_pointer_cast(num_selected);
 
     // Only keep top n scores
     auto indices_filtered = indices;
     if (num_detections > top_n) {
+      // lấy score theo indices đã chọn ở trên, sort index theo score
       thrust::gather(on_stream, indices, indices + num_detections,
         in_scores, scores);
       cub::DeviceRadixSort::SortPairsDescending(workspace, workspace_size,

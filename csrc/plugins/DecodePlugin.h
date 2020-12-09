@@ -98,6 +98,7 @@ public:
     : _score_thresh(score_thresh), _top_n(top_n), _anchors(anchors), _scale(scale),
       _height(height), _width(width), _num_anchors(num_anchors), _num_classes(num_classes) {}
 
+// Sử dụng khi load engine
   DecodePlugin(void const* data, size_t length) {
       this->deserialize(data, length);
   }
@@ -197,11 +198,13 @@ public:
   }
   
 private:
+// đẩy data từ val vào buffer --- Trong khi save model
   template<typename T> void write(char*& buffer, const T& val) const {
     *reinterpret_cast<T*>(buffer) = val;
     buffer += sizeof(T);
   }
 
+// đẩy data từ buffer vào val --- Trong khi read model
   template<typename T> void read(const char*& buffer, T& val) {
     val = *reinterpret_cast<const T*>(buffer);
     buffer += sizeof(T);
